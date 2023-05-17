@@ -28,12 +28,21 @@ const form = () => {
           <Form.Label>Email address:</Form.Label>
           <Form.Control type="Email" {...register("Email")} />
         </Form.Group>
-        <Form.Label>Curso</Form.Label>
+        <Form.Label>Curso:</Form.Label>
         <Form.Select {...register("Curso")} controlId="Curso">
           <option></option>
           <option>Culinaria</option>
           <option>Ciencia da Computacao</option>
           <option>Direito</option>
+          <option>Educao Fisica</option>
+          <option>Medicina</option>
+          <option>Geografia</option>
+        </Form.Select>
+        <Form.Label>Modalidade:</Form.Label>
+        <Form.Select {...register("Curso")} controlId="Curso">
+          <option></option>
+          <option>EAD</option>
+          <option>Presencial</option>
         </Form.Select>
         <br></br>
         <Button variant="primary" onClick={handleSubmit(salvar)}>
