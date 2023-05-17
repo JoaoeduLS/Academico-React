@@ -143,6 +143,9 @@ const form = () => {
   const { register, handleSubmit } = useForm();
 
   function salvar(dados) {
+    const cursos = [];
+    cursos.push(dados);
+    window.localStorage.setItem("cursos", JSON.stringify(cursos));
     console.log(dados);
   }
 
@@ -176,4 +179,32 @@ const form = () => {
     </Pagina>
   );
 };
+```
+
+#### Aprendendo a salva no browser do chorme
+
+<p>salvando os dados do formulario no browser , sera salvo sempre no computador que vc esta</p>
+
+```js
+const form = () => {
+  const { register, handleSubmit } = useForm();
+
+  function salvar(dados) {
+    const cursos = [];
+    cursos.push(dados);
+    window.localStorage.setItem("cursos", JSON.stringify(cursos));
+    console.log(dados);
+  }
+
+///condicao para caso o campo curso nao esteja marcado para nao da erro :
+
+const form = () => {
+  const { register, handleSubmit } = useForm();
+
+  function salvar(dados) {
+    const cursos = JSON.parse(window.localStorage.getItem("cursos")) || [];
+    cursos.push(dados);
+    window.localStorage.setItem("cursos", JSON.stringify(cursos));
+    console.log(dados);
+  }
 ```

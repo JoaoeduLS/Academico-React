@@ -7,6 +7,9 @@ const form = () => {
   const { register, handleSubmit } = useForm();
 
   function salvar(dados) {
+    const cursos = JSON.parse(window.localStorage.getItem("cursos")) || [];
+    cursos.push(dados);
+    window.localStorage.setItem("cursos", JSON.stringify(cursos));
     console.log(dados);
   }
 
