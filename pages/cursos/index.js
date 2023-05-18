@@ -2,6 +2,7 @@ import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button, FormGroup, Table } from "react-bootstrap";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
@@ -14,6 +15,8 @@ const index = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
+            <th>#</th>
+            <th>Del</th>
             <th>NOME</th>
             <th>Telefone</th>
             <th>Email</th>
@@ -22,8 +25,12 @@ const index = () => {
           </tr>
         </thead>
         <tbody>
-          {cursos.map((item) => (
+          {cursos.map((item, i) => (
             <tr>
+              <td>{i}</td>
+              <td>
+                <AiOutlineDelete className="text-danger" />
+              </td>
               <td>{item.nome}</td>
               <td>{item.Numero}</td>
               <td>{item.Email}</td>
