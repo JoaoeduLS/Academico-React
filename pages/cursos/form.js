@@ -22,7 +22,7 @@ const form = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="Numero">
           <Form.Label>Telefone:</Form.Label>
-          <Form.Control type="Telefone" {...register("Numero")} />
+          <Form.Control type="number" {...register("Numero")} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Email">
           <Form.Label>Email address:</Form.Label>
@@ -38,8 +38,9 @@ const form = () => {
           <option>Medicina</option>
           <option>Geografia</option>
         </Form.Select>
+        <br></br>
         <Form.Label>Modalidade:</Form.Label>
-        <Form.Select {...register("Curso")} controlId="Curso">
+        <Form.Select {...register("Modadelida")} controlId="Modalidade">
           <option></option>
           <option>EAD</option>
           <option>Presencial</option>
@@ -47,6 +48,9 @@ const form = () => {
         <br></br>
         <Button variant="primary" onClick={handleSubmit(salvar)}>
           salvar
+        </Button>{" "}
+        <Button variant="dark" href="/cursos">
+          Volta
         </Button>
       </Form>
     </Pagina>

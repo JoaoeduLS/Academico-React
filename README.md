@@ -208,3 +208,25 @@ const form = () => {
     console.log(dados);
   }
 ```
+
+#### linkgem com map
+
+```js
+const [cursos, setCursos] = useState([]);
+useEffect(() => {
+  setCursos(JSON.parse(window.localStorage.getItem("cursos")) || []);
+}, []);
+console.log(cursos);
+
+/// return
+{
+  cursos.map((item) => (
+    <tr>
+      <td>{item.nome}</td>
+      <td>{item.Telefone}</td>
+      <td>{item.Email}</td>
+      <td>{item.Curso}</td>
+    </tr>
+  ));
+}
+```
