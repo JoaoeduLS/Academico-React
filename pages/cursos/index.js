@@ -7,9 +7,20 @@ import { AiOutlineDelete } from "react-icons/ai";
 const index = () => {
   const [cursos, setCursos] = useState([]);
   useEffect(() => {
-    setCursos(JSON.parse(window.localStorage.getItem("cursos")) || []);
+    setCursos(getAll());
   }, []);
   console.log(cursos);
+
+  function getAll() {
+    return JSON.parse(window.localStorage.getItem("cursos")) || [];
+  }
+
+  function excluir(id) {
+    const cursos = getAll();
+    cursos.splice(id, 1);
+    window.localStorage.setItem(`cursos`, JSON.stringify(cursos));
+    setCursos(cursos);
+  }
   return (
     <Pagina titulo="Cursos">
       <Table striped bordered hover variant="dark">
@@ -29,7 +40,10 @@ const index = () => {
             <tr>
               <td>{i}</td>
               <td>
-                <AiOutlineDelete className="text-danger" />
+                <AiOutlineDelete
+                  onClick={() => excluir(i)}
+                  className="text-danger"
+                />
               </td>
               <td>{item.nome}</td>
               <td>{item.Numero}</td>

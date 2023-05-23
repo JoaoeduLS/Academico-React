@@ -1,12 +1,14 @@
+import Cabecalho from "@/components/Cabecalho";
+import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import PuffLoader from "react-spinners/PuffLoader";
 
 const index = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    navigator("/cursos");
     setTimeout(() => {
       setLoading(false);
     }, 5000);
@@ -14,6 +16,7 @@ const index = () => {
   return (
     <div
       style={{
+        backgroundColor: "#1C1C1C",
         textAlign: "center",
         display: "flex",
         justifyContent: "center",
@@ -23,9 +26,18 @@ const index = () => {
       }}
     >
       {loading ? (
-        <PuffLoader color={"#05A41C"} loading={loading} size={100} />
+        <PuffLoader color={"#C71585"} loading={loading} size={90} />
       ) : (
-        <Link href="/cursos"></Link>
+        <Button
+          variant="secondary"
+          size="lg"
+          href="/cursos"
+          style={{
+            backgroundColor: "#C71585",
+          }}
+        >
+          Bem-Vindo ao LeiloART
+        </Button>
       )}
     </div>
   );
