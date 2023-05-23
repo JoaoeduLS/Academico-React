@@ -10,7 +10,7 @@ const index = () => {
     setCursos(getAll());
   }, []);
   console.log(cursos);
-
+  ///criando o apaga
   function getAll() {
     return JSON.parse(window.localStorage.getItem("cursos")) || [];
   }
@@ -21,6 +21,7 @@ const index = () => {
     window.localStorage.setItem(`cursos`, JSON.stringify(cursos));
     setCursos(cursos);
   }
+  ///
   return (
     <Pagina titulo="Cursos">
       <Table striped bordered hover variant="dark">

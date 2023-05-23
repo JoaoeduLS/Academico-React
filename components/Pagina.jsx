@@ -8,7 +8,7 @@ const Pagina = (props) => {
       <Cabecalho />
       <div
         className="py-0 text-white text-center mb-3 "
-        style={{ backgroundColor: "#C71585" }}
+        style={{ backgroundColor: "#800000" }}
       >
         <Container style={{ color: "white" }}>
           <h1>{props.titulo}</h1>
@@ -26,7 +26,7 @@ const Pagina = (props) => {
           Todos os direitos reservados® Feito por{" "}
           <a
             href="https://github.com/JoaoeduLS"
-            style={{ textDecoration: "none", color: "#C71585" }}
+            style={{ textDecoration: "none", color: "#800000" }}
           >
             Joao Eduardo
           </a>

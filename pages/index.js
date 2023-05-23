@@ -26,14 +26,14 @@ const index = () => {
       }}
     >
       {loading ? (
-        <PuffLoader color={"#C71585"} loading={loading} size={90} />
+        <PuffLoader color={"#800000"} loading={loading} size={90} />
       ) : (
         <Button
           variant="secondary"
           size="lg"
           href="/cursos"
           style={{
-            backgroundColor: "#C71585",
+            backgroundColor: "#800000",
           }}
         >
           Bem-Vindo ao LeiloART
