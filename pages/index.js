@@ -3,7 +3,7 @@ import Pagina from "@/components/Pagina";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import PuffLoader from "react-spinners/PuffLoader";
+import CircleLoader from "react-spinners/CircleLoader";
 
 const index = () => {
   const [loading, setLoading] = useState(false);
@@ -26,12 +26,12 @@ const index = () => {
       }}
     >
       {loading ? (
-        <PuffLoader color={"#800000"} loading={loading} size={90} />
+        <CircleLoader color={"#800000"} loading={loading} size={90} />
       ) : (
         <Button
           variant="secondary"
           size="lg"
-          href="/cursos"
+          href="/inicio"
           style={{
             backgroundColor: "#800000",
           }}
