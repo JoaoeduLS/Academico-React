@@ -1,17 +1,16 @@
-import Cabecalho from "@/components/Cabecalho";
-import Pagina from "@/components/Pagina";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import CircleLoader from "react-spinners/CircleLoader";
+
+import PuffLoader from "react-spinners/PuffLoader";
+import { useRouter } from "next/router";
 
 const index = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+      router.push("/inicio");
+    }, 7000);
   }, []);
   return (
     <div
@@ -26,18 +25,16 @@ const index = () => {
       }}
     >
       {loading ? (
-        <CircleLoader color={"#800000"} loading={loading} size={90} />
+        <PuffLoader color={"#17583B"} loading={loading} size={90} />
       ) : (
-        <Button
-          variant="secondary"
-          size="lg"
-          href="/inicio"
-          style={{
-            backgroundColor: "#800000",
-          }}
-        >
-          Bem-Vindo ao LeiloART
-        </Button>
+        <>oi</>
+      )}
+      {loading && (
+        <img
+          src="https://icon-library.com/images/pokeball-icon-transparent/pokeball-icon-transparent-25.jpg"
+          alt="Loading"
+          style={{ width: "50px", height: "50px", position: "absolute" }}
+        />
       )}
     </div>
   );

@@ -1,12 +1,12 @@
 import Cabecalho from "@/components/Cabecalho";
 import Pagina from "@/components/Pagina";
 import React from "react";
-import { Button, Card, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 const index = () => {
   return (
     <Pagina titulo="Bem-Vindo ao leiloArt">
-      <Row className="flex gap-5 justify-content-md-center" md={3}>
+      <Row className="flex gap-5 justify-content-md-center" md={4}>
         <Card style={{ width: "18rem" }}>
           <Card.Img
             variant="top"
@@ -15,12 +15,6 @@ const index = () => {
           />
           <Card.Body>
             <Card.Title>A Noite Estrelada</Card.Title>
-            <Card.Text>
-              A Noite Estrelada é uma pintura de Vincent van Gogh de 1889. A
-              obra retrata a vista da janela de um quarto do hospício de
-              Saint-Rémy-de-Provence, pouco antes do nascer do sol, com a adição
-              de um vilarejo idealizado pelo artista.
-            </Card.Text>
             <Button
               variant="primary"
               href="https://pt.wikipedia.org/wiki/A_Noite_Estrelada"
@@ -37,13 +31,7 @@ const index = () => {
           />
           <Card.Body>
             <Card.Title>A criação de Adão</Card.Title>
-            <Card.Text>
-              A obra renascentista intitulada A criação de Adão foi feita por
-              volta de 1511 pelo famoso artista italiano Michelangelo.Esse é um
-              trabalho realizado com a técnica do afresco e integra o conjunto
-              de pinturas feitas no Teto da Capela Sistina, produzidas entre
-              1508 e 1512 por encomenda do papa Júlio II.
-            </Card.Text>
+
             <Button
               variant="primary"
               href="https://www.todamateria.com.br/a-criacao-de-adao-michelangelo/"
@@ -60,17 +48,65 @@ const index = () => {
           />
           <Card.Body>
             <Card.Title>A Última Ceia</Card.Title>
-            <Card.Text>
-              A Última Ceia (em italiano: L'Ultima Cena e também Il Cenacolo) é
-              um afresco de Leonardo da Vinci para a igreja de Santa Maria delle
-              Grazie em Milão, Itália. O trabalho presume-se que tenha sido
-              iniciado por volta de 1495-96 e foi encomendado como parte de um
-              plano de reformas na igreja e nos seus edifícios conventuais pelo
-              patrono de Leonardo, Ludovico Sforza, duque de Milão.
-            </Card.Text>
-            <Button variant="primary"> Ler mais</Button>
+            <Button
+              variant="primary"
+              href="https://www.todamateria.com.br/a-ultima-ceia-de-leonardo-da-vinci/"
+            >
+              {" "}
+              Ler mais
+            </Button>
           </Card.Body>
         </Card>
+        <Card style={{ width: "18rem" }}>
+          <Card.Img
+            variant="top"
+            src="https://arteeartistas.com.br/wp-content/uploads/2016/09/Tarde-de-Domingo-na-Ilha-da-Grande-Jatte-Georges-Seurat-1884-1886-%E2%80%93-Instituto-de-Arte-de-Chicago.jpg"
+            style={{ width: "16.5rem", height: "10.4rem" }}
+          />
+          <Card.Body>
+            <Card.Title>
+              Uma Tarde de Domingo na Ilha de Grande Jatte
+            </Card.Title>
+            <Button
+              variant="primary"
+              href="https://pt.wikipedia.org/wiki/Uma_Tarde_de_Domingo_na_Ilha_de_Grande_Jatte"
+            >
+              {" "}
+              Ler mais
+            </Button>
+          </Card.Body>
+        </Card>
+      </Row>
+      <br></br>
+      <br></br>
+      <Row
+        style={{
+          backgroundColor: "#800000",
+          marginLeft: "-111.3px",
+          marginRight: "-111.3px",
+          paddingTop: "50px",
+          paddingBottom: "50px",
+          color: "white",
+        }}
+      >
+        <Col md={12} className="text-center">
+          <h2>
+            Gostaria de colocar sua arte em nosso site? Aperte em{" "}
+            <strong>Cadastrar</strong> para nos informar mais:
+          </h2>
+          <p>
+            Estamos emocionados em anunciar que estamos organizando um leilão de
+            arte incrível e gostaríamos de convidar todos vocês a participarem
+            deste evento especial. Queremos tornar este leilão verdadeiramente
+            memorável, reunindo obras de arte talentosas e únicas. E, falando em
+            obras de arte, temos o prazer de convidar os(as) artistas a fazer
+            parte deste leilão excepcional. Adoraríamos exibir e leiloar uma de
+            suas impressionantes criações.
+          </p>
+          <Button variant="primary" size="lg">
+            Cadastrar
+          </Button>
+        </Col>
       </Row>
     </Pagina>
   );
