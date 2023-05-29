@@ -35,7 +35,6 @@ const index = () => {
             </Button>
           </Card.Body>
         </Card>
-
         <Card
           style={{
             width: "18rem",
@@ -152,7 +151,7 @@ const index = () => {
               os(as) artistas a fazer parte deste leilão excepcional.
               Adoraríamos exibir e leiloar uma de suas impressionantes criações.
             </p>
-            <Button variant="primary" size="lg">
+            <Button href="/cursos/form" variant="primary" size="lg">
               Cadastrar
             </Button>
           </div>

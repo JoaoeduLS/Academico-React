@@ -13,7 +13,7 @@ const Cabecalho = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link href="/inicio">Inicio</Nav.Link>
-              <Nav.Link href="/cursos">Cursos</Nav.Link>
+              <Nav.Link href="/cursos">Cadastrados</Nav.Link>
               <Nav.Link href="">Professores</Nav.Link>
               <Nav.Link href="">Alunos</Nav.Link>
               <Nav.Link href="">Salas</Nav.Link>

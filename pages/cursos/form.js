@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-const form = () => {
+const Formulario = () => {
   const { register, handleSubmit } = useForm();
 
   function salvar(dados) {
@@ -14,7 +14,7 @@ const form = () => {
   }
 
   return (
-    <Pagina titulo="Formulario">
+    <Pagina titulo="Formulário">
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
@@ -25,36 +25,43 @@ const form = () => {
           <Form.Control type="number" {...register("Numero")} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Email">
-          <Form.Label>Email address:</Form.Label>
+          <Form.Label>Email:</Form.Label>
           <Form.Control type="Email" {...register("Email")} />
         </Form.Group>
-        <Form.Label>Curso:</Form.Label>
-        <Form.Select {...register("Curso")} controlId="Curso">
-          <option></option>
-          <option>Culinaria</option>
-          <option>Ciencia da Computacao</option>
-          <option>Direito</option>
-          <option>Educao Fisica</option>
-          <option>Medicina</option>
-          <option>Geografia</option>
-        </Form.Select>
-        <br></br>
-        <Form.Label>Modalidade:</Form.Label>
-        <Form.Select {...register("Modadelida")} controlId="Modalidade">
-          <option></option>
-          <option>EAD</option>
-          <option>Presencial</option>
-        </Form.Select>
-        <br></br>
+        <Form.Group className="mb-3" controlId="imagemId">
+          <Form.Label>ID da Imagem:</Form.Label>
+          <Form.Control type="text" {...register("imagemId")} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="Modalidade">
+          <Form.Label>Estilo:</Form.Label>
+          <Form.Select {...register("Modalidade")}>
+            <option></option>
+            <option>Desenho de observação</option>
+            <option>Desenho de memorização</option>
+            <option>Desenho realista </option>
+            <option>Desenho abstrato </option>
+            <option>Desenho a mão livre </option>
+            <option>Mangá </option>
+            <option>HQ </option>
+            <option>Chibi </option>
+            <option>Doodle Art</option>
+            <option>Cartoon</option>
+            <option> Estilo Disney </option>
+            <option>Zentangle</option>
+            <option> Desenho 3D</option>
+            <option>Hiper-realismo</option>
+            <option>Outro...</option>
+          </Form.Select>
+        </Form.Group>
         <Button variant="primary" onClick={handleSubmit(salvar)}>
-          salvar
+          Salvar
         </Button>{" "}
         <Button variant="dark" href="/cursos">
-          Volta
+          Voltar
         </Button>
       </Form>
     </Pagina>
   );
 };
 
-export default form;
+export default Formulario;
