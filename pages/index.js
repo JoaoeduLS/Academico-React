@@ -25,15 +25,15 @@ const index = () => {
       }}
     >
       {loading ? (
-        <PuffLoader color={"#17583B"} loading={loading} size={90} />
+        <PuffLoader color={"#800000"} loading={loading} size={200} />
       ) : (
-        <>oi</>
+        <></>
       )}
       {loading && (
         <img
-          src="https://icon-library.com/images/pokeball-icon-transparent/pokeball-icon-transparent-25.jpg"
+          src="https://media.discordapp.net/attachments/954503804676603998/1112902819633168425/Design_sem_nome__2_-removebg-preview_1.png?width=606&height=606"
           alt="Loading"
-          style={{ width: "50px", height: "50px", position: "absolute" }}
+          style={{ width: "90px", height: "90px", position: "absolute" }}
         />
       )}
     </div>
