@@ -28,7 +28,7 @@ const index = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
+            <th>ID</th>
             <th>Del</th>
             <th>Nome</th>
             <th>Telefone</th>
