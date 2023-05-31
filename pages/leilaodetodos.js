@@ -1,13 +1,45 @@
 import Pagina from "@/components/Pagina";
 import apiArts from "@/service/apiArt";
 import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { useState } from "react";
 
 const leilaodetodos = ({ artes }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredartes = artes.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const handleSearch = (evento) => {
+    evento.prevenirPadrão();
+    // Realize uma ação de pesquisa aqui, se necessário
+    console.log("Termo de pesquisa:", searchTerm);
+  };
   return (
     <Pagina titulo="Leilão">
+      <Card border="danger" style={{ width: "18rem" }}>
+        <Form className="d-flex" onSubmit={handleSearch}>
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-1"
+            aria-label="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              backgroundColor: "transparent",
+              border: "none",
+              outline: "none",
+            }}
+          />
+          <Button variant="danger" type="submit">
+            Busca
+          </Button>
+        </Form>
+      </Card>
+      <br></br>
+      <br></br>
       <Row>
-        {artes.map((item) => (
+        {filteredartes.map((item) => (
           <Col key={item.id} style={{ marginBottom: "1rem" }}>
             <Card
               style={{
