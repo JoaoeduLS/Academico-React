@@ -30,7 +30,7 @@ const leilaodetodos = ({ artes }) => {
               />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Button variant="primary" href={`/cursos/id/${item.id}`}>
+                <Button variant="primary" href={`/cursos/${item.id}`}>
                   Leilão
                 </Button>
               </Card.Body>

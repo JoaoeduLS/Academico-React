@@ -9,6 +9,10 @@ const Cabecalho = () => {
       <Navbar variant="dark" collapseOnSelect expand="lg" bg="dark">
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <img
+            src="https://media.discordapp.net/attachments/954503804676603998/1112898469775036456/Design_sem_nome-removebg-preview_2.png?width=606&height=606"
+            style={{ maxWidth: "60px" }}
+          />{" "}
           <Navbar.Brand href="/">LeiloArt</Navbar.Brand>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">

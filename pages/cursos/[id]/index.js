@@ -1,22 +1,25 @@
 import Pagina from "@/components/Pagina";
 import React from "react";
 import { Card } from "react-bootstrap";
+import apiArts from "@/service/apiArt";
 
-const index = () => {
+const index = ({ artes }) => {
   return (
-    <Pagina titulo="Leilão-Compra">
+    <Pagina titulo={artes.title}>
       {["Danger"].map((variant) => (
         <Card
           bg={variant.toLowerCase()}
           key={variant}
           text={variant.toLowerCase() === "light" ? "dark" : "white"}
-          style={{ width: "18rem" }}
+          style={{
+            width: "20rem",
+            boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
+          }}
           className="mb-2"
         >
           <Card.Body>
             <Card.Img
-              variant="top"
-              src="https://arteeartistas.com.br/wp-content/uploads/2016/09/Tarde-de-Domingo-na-Ilha-da-Grande-Jatte-Georges-Seurat-1884-1886-%E2%80%93-Instituto-de-Arte-de-Chicago.jpg"
+              src={`https://www.artic.edu/iiif/2/${artes.image_id}/full/843,/0/default.jpg`}
               style={{
                 border: "3px solid white",
                 borderRadius: "10px",
@@ -29,10 +32,14 @@ const index = () => {
                 e.currentTarget.style.transform = "scale(1)";
               }}
             />
+            <br></br>
+            <br></br>
+            <Card.Title className="text-center">
+              {variant} {artes.title}{" "}
+            </Card.Title>
           </Card.Body>
           <Card>
             <ul style={{ color: "black" }}>
-              <h5>informacoes</h5>
               <li>Inf</li>
               <li>Inf</li>
               <li>Inf</li>
@@ -48,3 +55,12 @@ const index = () => {
 };
 
 export default index;
+
+export async function getServerSideProps(context) {
+  const id = context.params.id;
+  const resultado = await apiArts.get(`/artworks/${id}`);
+  const artes = await resultado.data.data;
+  return {
+    props: { artes }, // will be passed to the page component as props
+  };
+}
