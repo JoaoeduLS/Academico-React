@@ -1,9 +1,13 @@
 import Pagina from "@/components/Pagina";
 import React from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import apiArts from "@/service/apiArt";
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
 
 const index = ({ artes }) => {
+  const [show, setShow] = useState(false);
+
   return (
     <Pagina titulo={artes.title}>
       <Row>
@@ -61,6 +65,26 @@ const index = ({ artes }) => {
               <ul>
                 <li> {artes.date_display}</li>
               </ul>
+
+              <Button variant="dark" onClick={() => setShow(true)}>
+                Historia
+              </Button>
+
+              <Modal
+                show={show}
+                onHide={() => setShow(false)}
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="example-custom-modal-styling-title">
+                    Historia da {artes.title}
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p>{artes.publication_history}</p>
+                </Modal.Body>
+              </Modal>
             </Card>
             <br></br>
           </Card>
@@ -69,25 +93,7 @@ const index = ({ artes }) => {
           <Col
             md={5} // Ajuste o valor de acordo com o tamanho desejado
             className="align-items-center justify-content-center"
-            style={{
-              width: "60rem", // Aumente o valor para ampliar a largura do card
-              height: "auto", // Altura responsiva com base no conteúdo
-              backgroundColor: "#800000",
-              borderRadius: "20px",
-              border: "3px solid black",
-              color: "white",
-              boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
-              margin: "10px", // Adicione margens ao redor do Col
-              padding: "10px", // Adicione um padding interno
-            }}
-          >
-            <div>
-              <h2>
-                <strong>Cadastrar</strong>
-              </h2>
-              <p>{artes.publication_history}</p>
-            </div>
-          </Col>
+          ></Col>
         </div>
       </Row>
     </Pagina>
