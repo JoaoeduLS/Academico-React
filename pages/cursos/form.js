@@ -4,7 +4,10 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 const Formulario = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit /*Colocando mensagem de erro na validacao formState:{errors}*/,
+  } = useForm();
 
   function salvar(dados) {
     const cursos = JSON.parse(window.localStorage.getItem("cursos")) || [];
@@ -12,13 +15,26 @@ const Formulario = () => {
     window.localStorage.setItem("cursos", JSON.stringify(cursos));
     console.log(dados);
   }
+  const validator = {
+    required: "o campo e obrigatorio ",
+    minLength: {
+      value: 3,
+      message: "a quantidade ao caracteres mininimo e 3",
+    },
+    required: "o campo e obrigatorio ",
+    maxLength: {
+      value: 30,
+      message: "a quantidade ao caracteres maximo e 30 ",
+    },
+  };
 
   return (
     <Pagina titulo="Formulário">
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" {...register("nome")} />
+          <Form.Control type="text" {...register("nome", validator)} />
+          {errors.nome && <small>O campo e obrigatorio</small>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="Numero">
           <Form.Label>Telefone:</Form.Label>

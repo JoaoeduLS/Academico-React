@@ -1,12 +1,33 @@
 import Pagina from "@/components/Pagina";
 import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row, Table } from "react-bootstrap";
 import apiArts from "@/service/apiArt";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+import { useForm } from "react-hook-form";
 
 const index = ({ artes }) => {
+  const { register, handleSubmit } = useForm();
+
   const [show, setShow] = useState(false);
+
+  const [leilao, setCursos] = useState([]);
+  useEffect(() => {
+    setCursos(getAll());
+  }, []);
+  console.log(leilao);
+
+  function getAll() {
+    return JSON.parse(window.localStorage.getItem("[id]")) || [];
+  }
+
+  function salvar(dados) {
+    const leilao = JSON.parse(window.localStorage.getItem("[id]")) || [];
+    leilao.push(dados);
+    window.localStorage.setItem("[id]", JSON.stringify(leilao));
+    console.log(dados);
+  }
 
   return (
     <Pagina titulo={artes.title}>
@@ -89,12 +110,58 @@ const index = ({ artes }) => {
             <br></br>
           </Card>
         ))}
-        <div className="col-md-6">
-          <Col
-            md={5} // Ajuste o valor de acordo com o tamanho desejado
-            className="align-items-center justify-content-center"
-          ></Col>
-        </div>
+
+        <Col
+          md={5} // Ajuste o valor de acordo com o tamanho desejado
+          className="align-items-center justify-content-center"
+        >
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Numero</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leilao.map((item, i) => (
+                <tr>
+                  <td>{i}</td>
+                  <td>{item.number}</td>
+                  <td>{item.valor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Col>
+
+        <Col
+          md={3} // Ajuste o valor de acordo com o tamanho desejado
+          className="align-items-center justify-content-center"
+        >
+          <Form>
+            <Form.Group className="mb-3" controlId="number">
+              <Form.Label>Numero do Participante:</Form.Label>
+              <Form.Control type="number" {...register("number")} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="valor">
+              <Form.Label>Valor:</Form.Label>
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">R$</span>
+                </div>
+                <Form.Control
+                  type="text"
+                  placeholder="0.00"
+                  {...register("valor")}
+                />
+              </div>
+            </Form.Group>
+            <Button variant="primary" href="/id" onClick={handleSubmit(salvar)}>
+              Salvar
+            </Button>{" "}
+          </Form>
+        </Col>
       </Row>
     </Pagina>
   );
