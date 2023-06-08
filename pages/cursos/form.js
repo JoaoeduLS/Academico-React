@@ -1,4 +1,5 @@
 import Pagina from "@/components/Pagina";
+import Error from "next/error";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -15,16 +16,16 @@ const Formulario = () => {
     window.localStorage.setItem("cursos", JSON.stringify(cursos));
     console.log(dados);
   }
-  const validator = {
-    required: "o campo e obrigatorio ",
+
+  const validatorNome = {
+    required: "O campo é obrigatório",
     minLength: {
       value: 3,
-      message: "a quantidade ao caracteres mininimo e 3",
+      message: "A quantidade de caracteres mínima é 3",
     },
-    required: "o campo e obrigatorio ",
     maxLength: {
-      value: 30,
-      message: "a quantidade ao caracteres maximo e 30 ",
+      value: 10,
+      message: "A quantidade de caracteres máxima é 10",
     },
   };
 
@@ -33,8 +34,7 @@ const Formulario = () => {
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" {...register("nome", validator)} />
-          {errors.nome && <small>O campo e obrigatorio</small>}
+          <Form.Control type="text" {...register("nome", validatorNome)} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Numero">
           <Form.Label>Telefone:</Form.Label>

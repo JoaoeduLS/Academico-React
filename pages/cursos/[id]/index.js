@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import ContagemRegressiva from "@/components/ContagemRegressiva";
 
 const index = ({ artes }) => {
   const { register, handleSubmit } = useForm();
@@ -28,6 +29,22 @@ const index = ({ artes }) => {
     window.localStorage.setItem("[id]", JSON.stringify(leilao));
     console.log(dados);
   }
+
+  function refreshPage() {
+    window.location.reload(); // Atualiza a página
+  }
+
+  const validatorNome = {
+    required: "O campo é obrigatório",
+    minLength: {
+      value: 3,
+      message: "A quantidade de caracteres mínima é 3",
+    },
+    maxLength: {
+      value: 10,
+      message: "A quantidade de caracteres máxima é 10",
+    },
+  };
 
   return (
     <Pagina titulo={artes.title}>
@@ -115,6 +132,7 @@ const index = ({ artes }) => {
           md={5} // Ajuste o valor de acordo com o tamanho desejado
           className="align-items-center justify-content-center"
         >
+          <h3>Compradores</h3>
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
@@ -128,7 +146,7 @@ const index = ({ artes }) => {
                 <tr>
                   <td>{i}</td>
                   <td>{item.number}</td>
-                  <td>{item.valor}</td>
+                  <td>R${item.valor}</td>
                 </tr>
               ))}
             </tbody>
@@ -139,28 +157,41 @@ const index = ({ artes }) => {
           md={3} // Ajuste o valor de acordo com o tamanho desejado
           className="align-items-center justify-content-center"
         >
-          <Form>
-            <Form.Group className="mb-3" controlId="number">
-              <Form.Label>Numero do Participante:</Form.Label>
-              <Form.Control type="number" {...register("number")} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="valor">
-              <Form.Label>Valor:</Form.Label>
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">R$</span>
-                </div>
+          <Card>
+            <br></br>
+            <Form>
+              <Form.Group className="mb-3" controlId="number">
+                <Form.Label>Numero do Participante:</Form.Label>
                 <Form.Control
-                  type="text"
-                  placeholder="0.00"
-                  {...register("valor")}
+                  type="number"
+                  {...register("number", validatorNome)}
                 />
-              </div>
-            </Form.Group>
-            <Button variant="primary" href="/id" onClick={handleSubmit(salvar)}>
-              Salvar
-            </Button>{" "}
-          </Form>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="valor">
+                <Form.Label>Valor:</Form.Label>
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">R$</span>
+                  </div>
+                  <Form.Control
+                    type="text"
+                    placeholder="0.00"
+                    {...register("valor", validatorNome)}
+                  />
+                </div>
+              </Form.Group>
+              <Button variant="danger" onClick={handleSubmit(salvar)}>
+                Salvar
+              </Button>{" "}
+              <Button onClick={refreshPage} variant="dark">
+                Refresh
+              </Button>
+            </Form>
+            <br></br>
+          </Card>
+          <br></br>
+          <br></br>
+          <ContagemRegressiva />
         </Col>
       </Row>
     </Pagina>
