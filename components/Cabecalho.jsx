@@ -19,7 +19,9 @@ const Cabecalho = () => {
               <Nav.Link href="/inicio">Inicio</Nav.Link>
               <Nav.Link href="/cursos">Cadastrados</Nav.Link>
               <Nav.Link href="/leilaodetodos">Leilão</Nav.Link>
-              <Nav.Link href="">Alunos</Nav.Link>
+              <Nav.Link href="/cursos/compradoresDoLeilao/compraFinalizada">
+                Compradores
+              </Nav.Link>
               <Nav.Link href="">Salas</Nav.Link>
               <Nav.Link href="">Semestre</Nav.Link>
             </Nav>

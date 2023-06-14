@@ -15,19 +15,17 @@ function ContagemRegressiva() {
     if (contagemAtiva) {
       interval = setInterval(() => {
         const agora = new Date();
-        const diferenca = dataFinal - agora;
+        const diferenca = dataFinal - agora + 3600 * 1000;
 
         if (diferenca > 0) {
           const totalSegundos = Math.floor(diferenca / 1000);
-          const totalMinutos = Math.floor(totalSegundos / 100000);
-          const totalHoras = Math.floor(totalMinutos / 50);
-          const totalDias = Math.floor(totalHoras / 30);
+          const totalMinutos = Math.floor(totalSegundos / 60);
+          const totalHoras = Math.floor(totalMinutos / 60);
 
           const segundosRestantes = totalSegundos % 60;
           const minutosRestantes = totalMinutos % 60;
           const horasRestantes = totalHoras % 24;
 
-          setDias(totalDias);
           setHoras(horasRestantes);
           setMinutos(minutosRestantes);
           setSegundos(segundosRestantes);
@@ -43,13 +41,6 @@ function ContagemRegressiva() {
     };
   }, [contagemAtiva, dataFinal]);
 
-  const cardStyle = {
-    marginRight: "10px",
-    borderRadius: "10px",
-    display: "inline-block",
-    width: "200px",
-  };
-
   const handleContagemClick = () => {
     setContagemAtiva(!contagemAtiva);
   };
@@ -58,7 +49,7 @@ function ContagemRegressiva() {
     <div>
       <h2>Contagem Regressiva</h2>
       <Row>
-        <Col>
+        <Col xs={12} sm={4}>
           <Card
             style={{
               backgroundColor: "#800000",
@@ -66,26 +57,7 @@ function ContagemRegressiva() {
               border: "3px solid black",
               color: "white",
               boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
-              marginRight: "10px",
-              display: "inline-block",
-              width: "100px",
-            }}
-          >
-            <Card.Body>
-              <Card.Title>{dias}</Card.Title>
-              <Card.Text>Dias</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card
-            style={{
-              backgroundColor: "#800000",
-              borderRadius: "20px",
-              border: "3px solid black",
-              color: "white",
-              boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
-              marginRight: "10px",
+              marginBottom: "10px",
               display: "inline-block",
               width: "100px",
             }}
@@ -96,7 +68,7 @@ function ContagemRegressiva() {
             </Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={4}>
           <Card
             style={{
               backgroundColor: "#800000",
@@ -104,7 +76,7 @@ function ContagemRegressiva() {
               border: "3px solid black",
               color: "white",
               boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
-              marginRight: "10px",
+              marginBottom: "10px",
               display: "inline-block",
               width: "100px",
             }}
@@ -115,7 +87,7 @@ function ContagemRegressiva() {
             </Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={4}>
           <Card
             style={{
               backgroundColor: "#800000",
@@ -123,7 +95,7 @@ function ContagemRegressiva() {
               border: "3px solid black",
               color: "white",
               boxShadow: "0 17px 10px rgba(0, 0, 0, 0.3)",
-              marginRight: "10px",
+              marginBottom: "10px",
               display: "inline-block",
               width: "110px",
             }}
@@ -141,7 +113,7 @@ function ContagemRegressiva() {
       </Button>
       <br></br>
       <br></br>
-      <Button variant="dark" size="lg">
+      <Button href="/cursos/compradoresDoLeilao/form" variant="dark" size="lg">
         Finaliza o leilão
       </Button>
     </div>

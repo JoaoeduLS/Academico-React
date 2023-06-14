@@ -13,9 +13,9 @@ const index = ({ artes }) => {
 
   const [show, setShow] = useState(false);
 
-  const [leilao, setCursos] = useState([]);
+  const [leilao, setLeilao] = useState([]);
   useEffect(() => {
-    setCursos(getAll());
+    setLeilao(getAll());
   }, []);
   console.log(leilao);
 

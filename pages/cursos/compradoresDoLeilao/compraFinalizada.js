@@ -6,25 +6,28 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
 
 const index = () => {
-  const [cursos, setCursos] = useState([]);
+  const [compraFinalizada, setCursos] = useState([]);
   useEffect(() => {
     setCursos(getAll());
   }, []);
-  console.log(cursos);
+  console.log(compraFinalizada);
   ///criando o apaga
   function getAll() {
-    return JSON.parse(window.localStorage.getItem("cursos")) || [];
+    return JSON.parse(window.localStorage.getItem("compraFinalizada")) || [];
   }
 
   function excluir(id) {
-    const cursos = getAll();
-    cursos.splice(id, 1);
-    window.localStorage.setItem(`cursos`, JSON.stringify(cursos));
-    setCursos(cursos);
+    const compraFinalizada = getAll();
+    compraFinalizada.splice(id, 1);
+    window.localStorage.setItem(
+      `compraFinalizada`,
+      JSON.stringify(compraFinalizada)
+    );
+    setCursos(compraFinalizada);
   }
   ///
   return (
-    <Pagina titulo="Novos Desenhos">
+    <Pagina titulo="Compradores">
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -33,12 +36,15 @@ const index = () => {
             <th>Nome</th>
             <th>Telefone</th>
             <th>Email</th>
-            <th>Estilo</th>
-            <th>Arte</th>
+            <th>CEP</th>
+            <th>Cidade</th>
+            <th>Número do cartão</th>
+            <th>Quantidade de produtos</th>
+            <th>Nome do quadro</th>
           </tr>
         </thead>
         <tbody>
-          {cursos.map((item, i) => (
+          {compraFinalizada.map((item, i) => (
             <tr>
               <td>{i}</td>
               <td>
@@ -50,25 +56,15 @@ const index = () => {
               <td>{item.nome}</td>
               <td>{item.Numero}</td>
               <td>{item.Email}</td>
-              <td>{item.Modalidade}</td>
-              <td>
-                <BiCopy
-                  onClick={() => {
-                    navigator.clipboard.writeText(item.imagemId);
-                    alert("ID da imagem copiado para a área de transferência!");
-                  }}
-                  className="text-danger"
-                  style={{ cursor: "pointer", marginLeft: "0.5rem" }}
-                />
-              </td>
+              <td>{item.CEP}</td>
+              <td>{item.Cidade}</td>
+              <td>{item.Númerodocartão}</td>
+              <td>{item.Quantidadedeprodutos}</td>
+              <td>{item.Nomedoquadro}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <br></br>
-      <Button href="/cursos/form" variant="primary">
-        Inscreva-se
-      </Button>{" "}
     </Pagina>
   );
 };

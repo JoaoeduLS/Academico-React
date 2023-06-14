@@ -24,8 +24,8 @@ const Formulario = () => {
       message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
-      value: 10,
-      message: "A quantidade de caracteres máxima é 10",
+      value: 2000,
+      message: "A quantidade de caracteres máxima é 2000",
     },
   };
 
