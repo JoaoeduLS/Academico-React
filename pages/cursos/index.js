@@ -66,7 +66,7 @@ const index = () => {
         </tbody>
       </Table>
       <br></br>
-      <Button href="/cursos/form" variant="primary">
+      <Button href="/cursos/form" variant="dark">
         Inscreva-se
       </Button>{" "}
     </Pagina>

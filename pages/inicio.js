@@ -29,7 +29,7 @@ const index = ({ artes }) => {
           <Card.Body>
             <Card.Title>A Noite Estrelada</Card.Title>
             <Button
-              variant="primary"
+              variant="dark"
               href="https://pt.wikipedia.org/wiki/A_Noite_Estrelada"
             >
               Ler mais
@@ -58,7 +58,7 @@ const index = ({ artes }) => {
             <Card.Title>A criação de Adão</Card.Title>
 
             <Button
-              variant="primary"
+              variant="dark"
               href="https://www.todamateria.com.br/a-criacao-de-adao-michelangelo/"
             >
               Ler mais
@@ -86,7 +86,7 @@ const index = ({ artes }) => {
           <Card.Body>
             <Card.Title>A Última Ceia</Card.Title>
             <Button
-              variant="primary"
+              variant="dark"
               href="https://www.todamateria.com.br/a-ultima-ceia-de-leonardo-da-vinci/"
             >
               Ler mais
@@ -116,7 +116,7 @@ const index = ({ artes }) => {
               Uma Tarde de Domingo na Ilha de Grande Jatte
             </Card.Title>
             <Button
-              variant="primary"
+              variant="dark"
               href="https://pt.wikipedia.org/wiki/Uma_Tarde_de_Domingo_na_Ilha_de_Grande_Jatte"
             >
               Ler mais
@@ -152,7 +152,7 @@ const index = ({ artes }) => {
               os(as) artistas a fazer parte deste leilão excepcional.
               Adoraríamos exibir e leiloar uma de suas impressionantes criações.
             </p>
-            <Button href="/cursos/form" variant="primary" size="lg">
+            <Button href="/cursos/form" variant="dark" size="lg">
               Cadastrar
             </Button>
           </div>
@@ -200,7 +200,7 @@ const index = ({ artes }) => {
               />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Button variant="primary" href={`/cursos/${item.id}`}>
+                <Button variant="dark" href={`/cursos/${item.id}`}>
                   Leilão
                 </Button>
               </Card.Body>

@@ -22,8 +22,7 @@ const Cabecalho = () => {
               <Nav.Link href="/cursos/compradoresDoLeilao/compraFinalizada">
                 Compradores
               </Nav.Link>
-              <Nav.Link href="">Salas</Nav.Link>
-              <Nav.Link href="">Semestre</Nav.Link>
+              <Nav.Link href="/cursos/artista/artista">Artistas</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
