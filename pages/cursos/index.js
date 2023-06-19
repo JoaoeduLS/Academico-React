@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Button, FormGroup, Table } from "react-bootstrap";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiCopy } from "react-icons/bi";
+import { BsFillPencilFill } from "react-icons/bs";
 
 const index = () => {
   const [cursos, setCursos] = useState([]);
@@ -30,6 +31,7 @@ const index = () => {
           <tr>
             <th>ID</th>
             <th>Del</th>
+            <th>Altera</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th>Email</th>
@@ -39,13 +41,18 @@ const index = () => {
         </thead>
         <tbody>
           {cursos.map((item, i) => (
-            <tr>
+            <tr key={i}>
               <td>{i}</td>
               <td>
                 <AiOutlineDelete
                   onClick={() => excluir(i)}
                   className="text-danger"
                 />
+              </td>
+              <td>
+                <Link href={"/cursos/" + i}>
+                  <BsFillPencilFill className="me-2 text-danger" />
+                </Link>
               </td>
               <td>{item.nome}</td>
               <td>{item.Numero}</td>

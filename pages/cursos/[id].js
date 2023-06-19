@@ -1,23 +1,31 @@
 import Pagina from "@/components/Pagina";
-import Error from "next/error";
-import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
-const Formulario = () => {
-  const {
-    register,
-    handleSubmit /*Colocando mensagem de erro na validacao formState:{errors}*/,
-  } = useForm();
+const form = () => {
+  const { push, query } = useRouter();
+  const { register, handleSubmit, setValue } = useForm();
+
+  useEffect(() => {
+    if (query.id) {
+      const id = query.id;
+      const cursos = JSON.parse(window.localStorage.getItem("cursos"));
+      const curso = cursos[id];
+
+      for (let atributo in curso) {
+        setValue(atributo, curso[atributo]);
+      }
+    }
+  }, [query.id]);
 
   function salvar(dados) {
     const cursos = JSON.parse(window.localStorage.getItem("cursos")) || [];
-    cursos.push(dados);
+    cursos.splice(query.id, 1, dados);
     window.localStorage.setItem("cursos", JSON.stringify(cursos));
-    console.log(dados);
+    push("/cursos");
   }
-
   const validatorNome = {
     required: "O campo é obrigatório",
     minLength: {
@@ -98,4 +106,4 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+export default form;

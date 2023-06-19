@@ -200,7 +200,7 @@ const index = ({ artes }) => {
               />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Button variant="dark" href={`/cursos/${item.id}`}>
+                <Button variant="dark" href={`/cursos/Leilao/${item.id}`}>
                   Leilão
                 </Button>
               </Card.Body>

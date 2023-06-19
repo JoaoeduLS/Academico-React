@@ -1,8 +1,14 @@
 import Pagina from "@/components/Pagina";
 import apiArts from "@/service/apiArt";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Table, Form, Row, Col, Button } from "react-bootstrap";
-import { AiOutlineDelete } from "react-icons/ai";
+import {
+  AiFillFileAdd,
+  AiFillInfoCircle,
+  AiOutlineDelete,
+} from "react-icons/ai";
+import { BsFillPencilFill } from "react-icons/bs";
 
 const index = ({ artes }) => {
   const [artistas, setCursos] = useState([]);
@@ -70,17 +76,8 @@ const index = ({ artes }) => {
             <tr key={item.artist_id}>
               <td>{item.artist_id || "ID Nao Encontrado"}</td>
               <td>
-                <a href={`/obras/${item.id}`}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-info-circle-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                  </svg>
+                <a href="/cursos/tiposdeartes/artesdoartista">
+                  <AiFillFileAdd className="text-danger" />
                 </a>
               </td>
 
@@ -105,25 +102,21 @@ const index = ({ artes }) => {
         </thead>
         <tbody>
           {artistas.map((item, i) => (
-            <tr>
-              <td>{item.id}</td>
+            <tr key={i}>
+              <td>{i}</td>
+
               <td>
                 <a href={item.Informacao}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-info-circle-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                  </svg>
+                  <AiFillInfoCircle className="text-danger" />
                 </a>
+
                 <AiOutlineDelete
                   onClick={() => excluir(i)}
                   className="text-danger"
                 />
+                <Link href={"/cursos/artista/" + i}>
+                  <BsFillPencilFill className="me-2 text-danger" />
+                </Link>
               </td>
 
               <td>{item.Artista}</td>

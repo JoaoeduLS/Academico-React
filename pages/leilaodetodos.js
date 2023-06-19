@@ -31,9 +31,6 @@ const leilaodetodos = ({ artes }) => {
               outline: "none",
             }}
           />
-          <Button variant="danger" type="submit">
-            Busca
-          </Button>
         </Form>
       </Card>
       <br></br>
@@ -62,7 +59,7 @@ const leilaodetodos = ({ artes }) => {
               />
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
-                <Button variant="dark" href={`/cursos/${item.id}`}>
+                <Button variant="dark" href={`/cursos/Leilao/${item.id}`}>
                   Leilão
                 </Button>
               </Card.Body>

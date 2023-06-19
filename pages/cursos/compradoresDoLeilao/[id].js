@@ -1,28 +1,36 @@
 import Pagina from "@/components/Pagina";
-import Error from "next/error";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-const index = () => {
-  const { push } = useRouter();
-  const {
-    register,
-    handleSubmit /*Colocando mensagem de erro na validacao formState:{errors}*/,
-  } = useForm();
+const form = () => {
+  const { query } = useRouter();
+  const { register, handleSubmit, setValue } = useForm();
+
+  useEffect(() => {
+    if (query.id) {
+      const id = query.id;
+      const compraFinalizada = JSON.parse(
+        window.localStorage.getItem("compraFinalizada")
+      );
+      const curso = compraFinalizada[id];
+
+      for (let atributo in curso) {
+        setValue(atributo, curso[atributo]);
+      }
+    }
+  }, [query.id]);
 
   function salvar(dados) {
     const compraFinalizada =
       JSON.parse(window.localStorage.getItem("compraFinalizada")) || [];
-    compraFinalizada.push(dados);
+    compraFinalizada.splice(query.id, 1, dados);
     window.localStorage.setItem(
       "compraFinalizada",
       JSON.stringify(compraFinalizada)
     );
-    console.log(dados);
   }
-
   const validatorNome = {
     required: "O campo é obrigatório",
     minLength: {
@@ -119,4 +127,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default form;
