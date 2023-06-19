@@ -29,7 +29,7 @@ const index = () => {
           <Form.Control type="text" {...register("nome")} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="quadro">
-          <Form.Label>Quadro:</Form.Label>
+          <Form.Label>Link Quadro:</Form.Label>
           <Form.Control type="text" {...register("quadro")} />
         </Form.Group>
         <Button variant="primary" onClick={handleSubmit(salvar)}>

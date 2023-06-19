@@ -11,8 +11,8 @@ const form = () => {
   useEffect(() => {
     if (query.id) {
       const id = query.id;
-      const artista = JSON.parse(window.localStorage.getItem("artista"));
-      const curso = artista[id];
+      const artistas = JSON.parse(window.localStorage.getItem("artistas"));
+      const curso = artistas[id];
 
       for (let atributo in curso) {
         setValue(atributo, curso[atributo]);
@@ -43,10 +43,6 @@ const form = () => {
   return (
     <Pagina titulo="Novo artista">
       <Form>
-        <Form.Group className="mb-3" controlId="id">
-          <Form.Label>ID:</Form.Label>
-          <Form.Control type="text" {...register("id", validatorNome)} />
-        </Form.Group>
         <Form.Group className="mb-3" controlId="Artista">
           <Form.Label>Artista:</Form.Label>
           <Form.Control type="text" {...register("Artista", validatorNome)} />
