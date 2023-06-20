@@ -32,8 +32,8 @@ const index = () => {
       message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
-      value: 2000,
-      message: "A quantidade de caracteres máxima é 2000",
+      value: 20000000,
+      message: "A quantidade de caracteres máxima é 20000000",
     },
   };
   const validatorNumberCartao = {
@@ -139,7 +139,7 @@ const index = () => {
           <Form.Control
             type="text"
             placeholder="R$ 000.000,00"
-            mask="R$ 000.000,00"
+            mask="R$ 00.000,00"
             {...register("Valor", validatorNome)}
             onChange={handleChange}
           />
