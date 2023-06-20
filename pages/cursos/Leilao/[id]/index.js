@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import ContagemRegressiva from "@/components/ContagemRegressiva";
+import { mask } from "remask";
 
 const index = ({ artes }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const [show, setShow] = useState(false);
 
@@ -45,6 +46,12 @@ const index = ({ artes }) => {
       message: "A quantidade de caracteres máxima é 10",
     },
   };
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const mascara = event.target.getAttribute("mask");
+    setValue(name, mask(value, mascara));
+  }
 
   return (
     <Pagina titulo={artes.title}>
@@ -146,7 +153,7 @@ const index = ({ artes }) => {
                 <tr>
                   <td>{i}</td>
                   <td>{item.number}</td>
-                  <td>R${item.valor}</td>
+                  <td>{item.valor}</td>
                 </tr>
               ))}
             </tbody>
@@ -175,8 +182,10 @@ const index = ({ artes }) => {
                   </div>
                   <Form.Control
                     type="text"
-                    placeholder="0.00"
+                    placeholder="R$ 000.000,00"
+                    mask="R$ 999.999,99"
                     {...register("valor", validatorNome)}
+                    onChange={handleChange}
                   />
                 </div>
               </Form.Group>

@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { mask } from "remask";
 
 const Formulario = () => {
   const {
     register,
     handleSubmit /*Colocando mensagem de erro na validacao formState:{errors}*/,
+    setValue,
   } = useForm();
 
   function salvar(dados) {
@@ -32,8 +34,8 @@ const Formulario = () => {
   const validatorNumber = {
     required: "O campo é obrigatório",
     minLength: {
-      value: 11,
-      message: "A quantidade de caracteres mínima é 11",
+      value: 3,
+      message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
       value: 14,
@@ -43,6 +45,12 @@ const Formulario = () => {
   const validatorcampo = {
     required: "O campo é obrigatório",
   };
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const mascara = event.target.getAttribute("mask");
+    setValue(name, mask(value, mascara));
+  }
 
   return (
     <Pagina titulo="Formulário">
@@ -54,8 +62,11 @@ const Formulario = () => {
         <Form.Group className="mb-3" controlId="Numero">
           <Form.Label>Telefone:</Form.Label>
           <Form.Control
-            type="number"
+            type="text"
+            placeholder="123.456.789.09"
+            mask="999.999.999-99"
             {...register("Numero", validatorNumber)}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="Email">

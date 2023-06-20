@@ -38,6 +38,7 @@ const index = () => {
             <th>Nome</th>
             <th>Telefone</th>
             <th>Email</th>
+            <th>CPF</th>
             <th>CEP</th>
             <th>Cidade</th>
             <th>Número do cartão</th>
@@ -64,12 +65,13 @@ const index = () => {
               <td>{item.nome}</td>
               <td>{item.Numero}</td>
               <td>{item.Email}</td>
+              <td>{item.CPF}</td>
               <td>{item.CEP}</td>
               <td>{item.Cidade}</td>
               <td>{item.Númerodocartão}</td>
               <td>{item.Quantidadedeprodutos}</td>
               <td>{item.Nomedoquadro}</td>
-              <th>R${item.Valor}</th>
+              <th>{item.Valor}</th>
             </tr>
           ))}
         </tbody>
