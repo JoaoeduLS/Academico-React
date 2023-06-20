@@ -182,8 +182,8 @@ const index = ({ artes }) => {
                   </div>
                   <Form.Control
                     type="text"
-                    placeholder="R$ 000.000,00"
-                    mask="R$ 999.999,99"
+                    placeholder="R$ 00.000,00"
+                    mask="R$ 99.999,99"
                     {...register("valor", validatorNome)}
                     onChange={handleChange}
                   />
