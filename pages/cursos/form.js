@@ -38,8 +38,8 @@ const Formulario = () => {
       message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
-      value: 14,
-      message: "A quantidade de caracteres máxima é 14",
+      value: 20,
+      message: "A quantidade de caracteres máxima é 20",
     },
   };
   const validatorcampo = {
@@ -63,8 +63,8 @@ const Formulario = () => {
           <Form.Label>Telefone:</Form.Label>
           <Form.Control
             type="text"
-            placeholder="123.456.789.09"
-            mask="999.999.999-99"
+            placeholder="(00) 90000-0000"
+            mask="(99) 99999-9999"
             {...register("Numero", validatorNumber)}
             onChange={handleChange}
           />

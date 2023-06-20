@@ -43,8 +43,8 @@ const index = () => {
       message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
-      value: 16,
-      message: "A quantidade de caracteres máxima é 16",
+      value: 40,
+      message: "A quantidade de caracteres máxima é 40",
     },
   };
   const validatorCep = {
@@ -54,8 +54,8 @@ const index = () => {
       message: "A quantidade de caracteres mínima é 3",
     },
     maxLength: {
-      value: 11,
-      message: "A quantidade de caracteres máxima é 11",
+      value: 50,
+      message: "A quantidade de caracteres máxima é 50",
     },
   };
   function handleChange(event) {
